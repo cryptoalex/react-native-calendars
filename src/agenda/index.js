@@ -42,7 +42,7 @@ export default class AgendaView extends Component {
     // callback that gets called on day press
     onDayPress: PropTypes.func,
     // callback that gets called when day changes while scrolling agenda list
-    onDaychange: PropTypes.func,
+    onDayChange: PropTypes.func,
     // specify how each item should be rendered in agenda
     renderItem: PropTypes.func,
     // specify how each date should be rendered. day can be undefined if the item is not first in that day.
