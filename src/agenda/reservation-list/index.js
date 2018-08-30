@@ -32,6 +32,8 @@ class ReactComp extends Component {
 
     selectedDay: PropTypes.instanceOf(XDate),
     topDay: PropTypes.instanceOf(XDate),
+
+    renderTopReservationsOverlay: PropTypes.func,
   };
 
   constructor(props) {
@@ -43,6 +45,10 @@ class ReactComp extends Component {
     this.heights=[];
     this.selectedDay = this.props.selectedDay;
     this.scrollOver = true;
+
+    if (!this.props.renderTopReservationsOverlay) {
+      this.props.renderTopReservationsOverlay = () => {};
+    }
   }
 
   componentWillMount() {
@@ -185,18 +191,21 @@ class ReactComp extends Component {
       return (<ActivityIndicator style={{marginTop: 80}}/>);
     }
     return (
-      <FlatList
-        ref={(c) => this.list = c}
-        style={this.props.style}
-        contentContainerStyle={this.styles.content}
-        renderItem={this.renderRow.bind(this)}
-        data={this.state.reservations}
-        onScroll={this.onScroll.bind(this)}
-        showsVerticalScrollIndicator={false}
-        scrollEventThrottle={200}
-        onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
-        keyExtractor={(item, index) => String(index)}
-      />
+      <View style={{flex: 1}}>
+        <FlatList
+          ref={(c) => this.list = c}
+          style={this.props.style}
+          contentContainerStyle={this.styles.content}
+          renderItem={this.renderRow.bind(this)}
+          data={this.state.reservations}
+          onScroll={this.onScroll.bind(this)}
+          showsVerticalScrollIndicator={false}
+          scrollEventThrottle={200}
+          onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
+          keyExtractor={(item, index) => String(index)}
+        />
+        { this.props.renderTopReservationsOverlay(this.selectedDay) }
+      </View>
     );
   }
 }

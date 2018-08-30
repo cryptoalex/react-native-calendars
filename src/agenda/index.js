@@ -83,6 +83,7 @@ export default class AgendaView extends Component {
     displayLoadingIndicator: PropTypes.bool,
 
     onScrollReservations: PropTypes.func,
+    renderTopReservationsOverlay: PropTypes.func,
   };
 
   constructor(props) {
@@ -281,6 +282,7 @@ export default class AgendaView extends Component {
         onScroll={this.props.onScrollReservations}
         ref={(c) => this.list = c}
         theme={this.props.theme}
+        renderTopReservationsOverlay={this.props.renderTopReservationsOverlay}
       />
     );
   }
