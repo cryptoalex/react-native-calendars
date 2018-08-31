@@ -55,7 +55,7 @@ class ReservationListItem extends Component {
     let content;
     if (reservation) {
       const firstItem = date ? true : false;
-      content = this.props.renderItem(reservation, firstItem);
+      content = this.props.renderItem(reservation, firstItem, date);
     } else {
       content = this.props.renderEmptyDate(date);
     }
