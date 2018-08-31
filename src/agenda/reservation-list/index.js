@@ -104,7 +104,9 @@ class ReactComp extends Component {
     const sameDate = dateutils.sameDate(day, this.selectedDay);
     if (!sameDate && this.scrollOver) {
       this.selectedDay = day.clone();
-      this.props.onDayChange(day.clone());
+      if (this.props.onDayChange) {
+        this.props.onDayChange(day.clone());
+      }
     }
   }
 
