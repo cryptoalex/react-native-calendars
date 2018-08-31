@@ -45,10 +45,6 @@ class ReactComp extends Component {
     this.heights=[];
     this.selectedDay = this.props.selectedDay;
     this.scrollOver = true;
-
-    if (!this.props.renderTopReservationsOverlay) {
-      this.props.renderTopReservationsOverlay = () => {};
-    }
   }
 
   componentWillMount() {
@@ -89,7 +85,9 @@ class ReactComp extends Component {
 
   onScroll(event) {
     const yOffset = event.nativeEvent.contentOffset.y;
-    this.props.onScroll(yOffset);
+    if (this.props.onScroll) {
+      this.props.onScroll(yOffset);
+    }
     let topRowOffset = 0;
     let topRow;
     for (topRow = 0; topRow < this.heights.length; topRow++) {
@@ -206,7 +204,7 @@ class ReactComp extends Component {
           onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
           keyExtractor={(item, index) => String(index)}
         />
-        { this.props.renderTopReservationsOverlay(this.selectedDay) }
+        { this.props.renderTopReservationsOverlay && this.props.renderTopReservationsOverlay(this.selectedDay) }
       </View>
     );
   }
