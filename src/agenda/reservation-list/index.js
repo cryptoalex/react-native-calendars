@@ -34,6 +34,9 @@ class ReactComp extends Component {
     topDay: PropTypes.instanceOf(XDate),
 
     renderTopReservationsOverlay: PropTypes.func,
+
+    renderItemHeader: PropTypes.func,
+    shouldRenderItemHeader: PropTypes.func,
   };
 
   constructor(props) {
@@ -122,6 +125,8 @@ class ReactComp extends Component {
           renderEmptyDate={this.props.renderEmptyDate}
           theme={this.props.theme}
           rowHasChanged={this.props.rowHasChanged}
+          renderItemHeader={this.props.renderItemHeader}
+          shouldRenderItemHeader={this.props.shouldRenderItemHeader}
         />
       </View>
     );
