@@ -49,6 +49,8 @@ class ReactComp extends Component {
     this.heights=[];
     this.selectedDay = this.props.selectedDay;
     this.scrollOver = true;
+
+    this.onViewableItemsChanged = this.onViewableItemsChanged.bind(this);
   }
 
   componentWillMount() {
@@ -212,7 +214,7 @@ class ReactComp extends Component {
           data={this.state.reservations}
           onScroll={this.onScroll.bind(this)}
           showsVerticalScrollIndicator={false}
-          onViewableItemsChanged={this.onViewableItemsChanged.bind(this)}
+          onViewableItemsChanged={this.onViewableItemsChanged}
           scrollEventThrottle={200}
           onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
           keyExtractor={(item, index) => String(index)}
