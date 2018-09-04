@@ -37,7 +37,9 @@ class ReactComp extends Component {
 
     renderItemHeader: PropTypes.func,
     shouldRenderItemHeader: PropTypes.func,
+
     onViewableItemsChanged: PropTypes.func,
+    viewAreaCoveragePercentThreshold: PropTypes.number,
   };
 
   constructor(props) {
@@ -51,7 +53,8 @@ class ReactComp extends Component {
     this.scrollOver = true;
 
     this.onViewableItemsChanged = this.onViewableItemsChanged.bind(this);
-    this.viewabilityConfig = {viewAreaCoveragePercentThreshold: 10};
+    this.viewabilityConfig = {viewAreaCoveragePercentThreshold:
+        this.props.viewAreaCoveragePercentThreshold ? this.props.viewAreaCoveragePercentThreshold : 50};
   }
 
   componentWillMount() {

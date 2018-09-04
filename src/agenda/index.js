@@ -87,7 +87,9 @@ export default class AgendaView extends Component {
 
     renderItemHeader: PropTypes.func,
     shouldRenderItemHeader: PropTypes.func,
+
     onViewableItemsChanged: PropTypes.func,
+    viewAreaCoveragePercentThreshold: PropTypes.number,
   };
 
   constructor(props) {
@@ -290,6 +292,7 @@ export default class AgendaView extends Component {
         renderItemHeader={this.props.renderItemHeader}
         shouldRenderItemHeader={this.props.shouldRenderItemHeader}
         onViewableItemsChanged={this.props.onViewableItemsChanged}
+        viewAreaCoveragePercentThreshold={this.props.viewAreaCoveragePercentThreshold}
       />
     );
   }
