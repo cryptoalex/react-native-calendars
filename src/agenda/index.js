@@ -87,6 +87,7 @@ export default class AgendaView extends Component {
 
     renderItemHeader: PropTypes.func,
     shouldRenderItemHeader: PropTypes.func,
+    onViewableItemsChanged: PropTypes.func,
   };
 
   constructor(props) {
@@ -288,6 +289,7 @@ export default class AgendaView extends Component {
         renderTopReservationsOverlay={this.props.renderTopReservationsOverlay}
         renderItemHeader={this.props.renderItemHeader}
         shouldRenderItemHeader={this.props.shouldRenderItemHeader}
+        onViewableItemsChanged={this.props.onViewableItemsChanged}
       />
     );
   }

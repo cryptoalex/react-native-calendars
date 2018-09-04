@@ -37,6 +37,7 @@ class ReactComp extends Component {
 
     renderItemHeader: PropTypes.func,
     shouldRenderItemHeader: PropTypes.func,
+    onViewableItemsChanged: PropTypes.func,
   };
 
   constructor(props) {
@@ -188,6 +189,12 @@ class ReactComp extends Component {
     return {reservations, scrollPosition};
   }
 
+  onViewableItemsChanged(viewableItems, changed) {
+    if (this.props.onViewableItemsChanged) {
+      this.props.onViewableItemsChanged(viewableItems, changed);
+    }
+  }
+
   render() {
     if (!this.props.reservations || !this.props.reservations[this.props.selectedDay.toString('yyyy-MM-dd')]) {
       if (this.props.renderEmptyData) {
@@ -205,6 +212,7 @@ class ReactComp extends Component {
           data={this.state.reservations}
           onScroll={this.onScroll.bind(this)}
           showsVerticalScrollIndicator={false}
+          onViewableItemsChanged={this.onViewableItemsChanged.bind(this)}
           scrollEventThrottle={200}
           onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
           keyExtractor={(item, index) => String(index)}
