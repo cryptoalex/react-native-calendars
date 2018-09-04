@@ -51,6 +51,7 @@ class ReactComp extends Component {
     this.scrollOver = true;
 
     this.onViewableItemsChanged = this.onViewableItemsChanged.bind(this);
+    this.viewabilityConfig = {viewAreaCoveragePercentThreshold: 10};
   }
 
   componentWillMount() {
@@ -215,6 +216,7 @@ class ReactComp extends Component {
           onScroll={this.onScroll.bind(this)}
           showsVerticalScrollIndicator={false}
           onViewableItemsChanged={this.onViewableItemsChanged}
+          viewabilityConfig={this.viewabilityConfig}
           scrollEventThrottle={200}
           onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
           keyExtractor={(item, index) => String(index)}
