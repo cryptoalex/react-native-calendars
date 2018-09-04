@@ -192,9 +192,9 @@ class ReactComp extends Component {
     return {reservations, scrollPosition};
   }
 
-  onViewableItemsChanged(viewableItems, changed) {
+  onViewableItemsChanged(info) {
     if (this.props.onViewableItemsChanged) {
-      this.props.onViewableItemsChanged(viewableItems, changed);
+      this.props.onViewableItemsChanged(info);
     }
   }
 
