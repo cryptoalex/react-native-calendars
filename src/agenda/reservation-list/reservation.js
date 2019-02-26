@@ -23,7 +23,7 @@ class ReservationListItem extends Component {
       if (!r1ExtraData && !r2ExtraData) {
         changed = false;
       } else if(r1ExtraData && r2ExtraData) {
-        changed = JSON.stringify(r1ExtraData) === JSON.stringify(r2ExtraData);
+        changed = JSON.stringify(r1ExtraData) !== JSON.stringify(r2ExtraData);
       } else {
         changed = true;
       }
