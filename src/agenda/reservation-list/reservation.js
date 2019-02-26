@@ -20,18 +20,12 @@ class ReservationListItem extends Component {
 
     let changed = true;
     if (!r1 && !r2) {
-      if (!r1ExtraData && !r2ExtraData) {
-        changed = false;
-      } else if(r1ExtraData && r2ExtraData) {
-        changed = JSON.stringify(r1ExtraData) !== JSON.stringify(r2ExtraData);
-      } else {
-        changed = true;
-      }
+      changed = this.compareExtras(r1ExtraData, r2ExtraData);
     } else if (r1 && r2) {
       if (r1.day.getTime() !== r2.day.getTime()) {
         changed = true;
       } else if (!r1.reservation && !r2.reservation) {
-        changed = false;
+        changed = this.compareExtras(r1ExtraData, r2ExtraData);
       } else if (r1.reservation && r2.reservation) {
         if ((!r1.date && !r2.date) || (r1.date && r2.date)) {
           changed = this.props.rowHasChanged(r1.reservation, r2.reservation);
@@ -39,6 +33,16 @@ class ReservationListItem extends Component {
       }
     }
     return changed;
+  }
+
+  compareExtras(r1ExtraData, r2ExtraData) {
+    if (!r1ExtraData && !r2ExtraData) {
+      return false;
+    }
+    if(r1ExtraData && r2ExtraData) {
+      return JSON.stringify(r1ExtraData) !== JSON.stringify(r2ExtraData);
+    }
+    return true;
   }
 
   renderDate(date, item) {
