@@ -53,29 +53,10 @@ class ReactComp extends Component {
     this.heights=[];
     this.selectedDay = this.props.selectedDay;
     this.scrollOver = true;
-    this.hasExtraDataChanged = false;
 
     this.onViewableItemsChanged = this.onViewableItemsChanged.bind(this);
     this.viewabilityConfig = {viewAreaCoveragePercentThreshold:
         this.props.viewAreaCoveragePercentThreshold ? this.props.viewAreaCoveragePercentThreshold : 50};
-  }
-
-  shouldComponentUpdate(nextProps) {
-    const r1ExtraData = this.props.flatListExtraData;
-    const r2ExtraData = nextProps.flatListExtraData;
-
-    this.hasExtraDataChanged = this.compareExtras(r1ExtraData, r2ExtraData);
-    return true;
-  }
-
-  compareExtras(r1ExtraData, r2ExtraData) {
-    if (!r1ExtraData && !r2ExtraData) {
-      return false;
-    }
-    if(r1ExtraData && r2ExtraData) {
-      return JSON.stringify(r1ExtraData) !== JSON.stringify(r2ExtraData);
-    }
-    return true;
   }
 
   componentWillMount() {
@@ -155,7 +136,7 @@ class ReactComp extends Component {
           rowHasChanged={this.props.rowHasChanged}
           renderItemHeader={this.props.renderItemHeader}
           shouldRenderItemHeader={this.props.shouldRenderItemHeader}
-          hasExtraDataChanged={this.hasExtraDataChanged}
+          extraData={this.props.flatListExtraData}
         />
       </View>
     );
