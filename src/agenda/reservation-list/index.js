@@ -40,6 +40,8 @@ class ReactComp extends Component {
 
     onViewableItemsChanged: PropTypes.func,
     viewAreaCoveragePercentThreshold: PropTypes.number,
+
+    flatListExtraData: PropTypes.object,
   };
 
   constructor(props) {
@@ -223,6 +225,7 @@ class ReactComp extends Component {
           scrollEventThrottle={200}
           onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
           keyExtractor={(item, index) => String(index)}
+          extraData={this.props.flatListExtraData ? this.props.flatListExtraData : {}}
         />
         { this.props.renderTopReservationsOverlay && this.props.renderTopReservationsOverlay(this.selectedDay) }
       </View>
