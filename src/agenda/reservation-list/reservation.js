@@ -15,17 +15,14 @@ class ReservationListItem extends Component {
     const r1 = this.props.item;
     const r2 = nextProps.item;
 
-    const r1ExtraData = this.props.extraData;
-    const r2ExtraData = nextProps.extraData;
-
     let changed = true;
     if (!r1 && !r2) {
-      changed = this.compareExtras(r1ExtraData, r2ExtraData);
+      changed = this.props.hasExtraDataChanged;
     } else if (r1 && r2) {
       if (r1.day.getTime() !== r2.day.getTime()) {
         changed = true;
       } else if (!r1.reservation && !r2.reservation) {
-        changed = this.compareExtras(r1ExtraData, r2ExtraData);
+        changed = this.props.hasExtraDataChanged;
       } else if (r1.reservation && r2.reservation) {
         if ((!r1.date && !r2.date) || (r1.date && r2.date)) {
           changed = this.props.rowHasChanged(r1.reservation, r2.reservation);
@@ -33,16 +30,6 @@ class ReservationListItem extends Component {
       }
     }
     return changed;
-  }
-
-  compareExtras(r1ExtraData, r2ExtraData) {
-    if (!r1ExtraData && !r2ExtraData) {
-      return false;
-    }
-    if(r1ExtraData && r2ExtraData) {
-      return JSON.stringify(r1ExtraData) !== JSON.stringify(r2ExtraData);
-    }
-    return true;
   }
 
   renderDate(date, item) {
