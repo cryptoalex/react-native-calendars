@@ -14,9 +14,19 @@ class ReservationListItem extends Component {
   shouldComponentUpdate(nextProps) {
     const r1 = this.props.item;
     const r2 = nextProps.item;
+
+    const r1ExtraData = this.props.extraData;
+    const r2ExtraData = nextProps.extraData;
+
     let changed = true;
     if (!r1 && !r2) {
-      changed = false;
+      if (!r1ExtraData && !r2ExtraData) {
+        changed = false;
+      } else if(r1ExtraData && r2ExtraData) {
+        changed = JSON.stringify(r1ExtraData) === JSON.stringify(r2ExtraData);
+      } else {
+        changed = true;
+      }
     } else if (r1 && r2) {
       if (r1.day.getTime() !== r2.day.getTime()) {
         changed = true;

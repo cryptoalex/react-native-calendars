@@ -136,6 +136,7 @@ class ReactComp extends Component {
           rowHasChanged={this.props.rowHasChanged}
           renderItemHeader={this.props.renderItemHeader}
           shouldRenderItemHeader={this.props.shouldRenderItemHeader}
+          extraData={this.props.flatListExtraData ? this.props.flatListExtraData : {}}
         />
       </View>
     );
