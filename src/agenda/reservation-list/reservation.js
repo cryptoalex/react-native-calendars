@@ -78,12 +78,12 @@ class ReservationListItem extends Component {
       return (
         <ViewOverflow style={{flexDirection: 'column'}}>
           {this.props.renderItemHeader(reservation, date)}
-          <View style={this.styles.container}>
+          <ViewOverflow style={this.styles.container}>
             {this.renderDate(date, reservation)}
-            <View style={{flex:1}}>
+            <ViewOverflow style={{flex:1}}>
               {content}
-            </View>
-          </View>
+            </ViewOverflow>
+          </ViewOverflow>
         </ViewOverflow>
       );
     }
@@ -91,9 +91,9 @@ class ReservationListItem extends Component {
     return (
       <ViewOverflow style={this.styles.container}>
         {this.renderDate(date, reservation)}
-        <View style={{flex:1}}>
+        <ViewOverflow style={{flex:1}}>
           {content}
-        </View>
+        </ViewOverflow>
       </ViewOverflow>
     );
   }
