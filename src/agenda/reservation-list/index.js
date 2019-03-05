@@ -4,10 +4,11 @@ import {
   ActivityIndicator,
   View
 } from 'react-native';
-import Reservation from './reservation';
+import ViewOverflow from 'react-native-view-overflow';
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
 
+import Reservation from './reservation';
 import dateutils from '../../dateutils';
 import styleConstructor from './style';
 
@@ -126,7 +127,7 @@ class ReactComp extends Component {
 
   renderRow({item, index}) {
     return (
-      <View onLayout={this.onRowLayoutChange.bind(this, index)}>
+      <ViewOverflow onLayout={this.onRowLayoutChange.bind(this, index)}>
         <Reservation
           item={item}
           renderItem={this.props.renderItem}
@@ -138,7 +139,7 @@ class ReactComp extends Component {
           shouldRenderItemHeader={this.props.shouldRenderItemHeader}
           extraData={this.props.flatListExtraData}
         />
-      </View>
+      </ViewOverflow>
     );
   }
 
