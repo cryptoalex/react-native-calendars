@@ -127,7 +127,7 @@ class ReactComp extends Component {
 
   renderRow({item, index}) {
     return (
-      <ViewOverflow onLayout={this.onRowLayoutChange.bind(this, index)}>
+      <View onLayout={this.onRowLayoutChange.bind(this, index)}>
         <Reservation
           item={item}
           renderItem={this.props.renderItem}
@@ -139,7 +139,7 @@ class ReactComp extends Component {
           shouldRenderItemHeader={this.props.shouldRenderItemHeader}
           extraData={this.props.flatListExtraData}
         />
-      </ViewOverflow>
+      </View>
     );
   }
 

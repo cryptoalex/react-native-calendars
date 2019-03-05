@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import ViewOverflow from 'react-native-view-overflow';
 import XDate from 'xdate';
 
 import {xdateToData} from '../../interface';
@@ -76,25 +75,25 @@ class ReservationListItem extends Component {
     if (firstItem && this.props.shouldRenderItemHeader && this.props.renderItemHeader &&
       this.props.shouldRenderItemHeader(reservation, firstItem, date)) {
       return (
-        <ViewOverflow style={{flexDirection: 'column'}}>
+        <View style={{flexDirection: 'column'}}>
           {this.props.renderItemHeader(reservation, date)}
-          <ViewOverflow style={this.styles.container}>
+          <View style={this.styles.container}>
             {this.renderDate(date, reservation)}
-            <ViewOverflow style={{flex:1}}>
+            <View style={{flex:1}}>
               {content}
-            </ViewOverflow>
-          </ViewOverflow>
-        </ViewOverflow>
+            </View>
+          </View>
+        </View>
       );
     }
 
     return (
-      <ViewOverflow style={this.styles.container}>
+      <View style={this.styles.container}>
         {this.renderDate(date, reservation)}
-        <ViewOverflow style={{flex:1}}>
+        <View style={{flex:1}}>
           {content}
-        </ViewOverflow>
-      </ViewOverflow>
+        </View>
+      </View>
     );
   }
 }
