@@ -228,6 +228,7 @@ class ReactComp extends Component {
           onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
           keyExtractor={(item, index) => String(index)}
           extraData={this.props.flatListExtraData ? this.props.flatListExtraData : {}}
+          CellRendererComponent={ViewOverflow}
         />
         { this.props.renderTopReservationsOverlay && this.props.renderTopReservationsOverlay(this.selectedDay) }
       </View>
