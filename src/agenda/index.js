@@ -200,7 +200,7 @@ export default class AgendaView extends Component {
   }
 
   loadReservations(props) {
-    console.log(`AgendaComponent loadReservations ${(props.items ? props.items.length : -1)} firstResevationLoad=${this.state.firstResevationLoad}`);
+    console.log(`AgendaComponent loadReservations ${(props.items ? Object.keys(props.items).length : -1)} firstResevationLoad=${this.state.firstResevationLoad}`);
 
     if ((!props.items || !Object.keys(props.items).length) && !this.state.firstResevationLoad) {
       console.log('AgendaComponent loadReservations setState');
@@ -227,7 +227,7 @@ export default class AgendaView extends Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.items && props.items.length > 0) {
+    if (props.items && Object.keys(props.items).length > 0) {
       this.setState({
         firstResevationLoad: false
       });
